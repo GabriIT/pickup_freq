@@ -1,3 +1,5 @@
+# pickupfreq-mgjsueazwpyr3xwvkzsjdm.streamlit.app
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -7,6 +9,7 @@ st.title('Uber pickups in NYC')
 DATE_COLUMN = 'date/time'
 DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
             'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
+
 
 @st.cache_data
 def load_data(nrows):
@@ -40,4 +43,3 @@ hour_to_filter = st.slider('hour', 0, 23, 17)
 filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 st.subheader(f'Map of all pickups at {hour_to_filter}:00')
 st.map(filtered_data)
-
